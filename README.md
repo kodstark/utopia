@@ -7,7 +7,7 @@ Clone forked
 
 Add remote to original repo
 
-git remote add bs https://github.com/buildstuffmq/utopia
+git remote add bs git@github.com:kodstark/utopia
 
 Take changes merged pull requests
 
