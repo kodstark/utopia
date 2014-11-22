@@ -5,8 +5,16 @@ import time
 
 from zmq import Poller
 
+# tcp://192.168.43.55
+# 
+
+# ip = "tcp://192.168.43.55"
+ip = "tcp://192.168.43.11"
+
 def _urls():
-    return ["tcp://localhost:%s" % port for port in range(5500, 5600)]
+	for ip in range(10, 60):
+		for port in range(5500, 5600):
+			yield "tcp://192.168.43.%s:%s" % (ip, port)
 
 context = zmq.Context()
 poller = Poller()
