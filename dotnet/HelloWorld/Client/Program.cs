@@ -10,16 +10,23 @@ namespace HelloWorld.Client
 		public static void Main()
 		{
 			Console.WriteLine("Starting Client:");
-			Start();
+			string url;
+
+			if (args != null && args.Length == 1)
+				url = args [0];
+			else
+				url = "tcp://*:5556";
+
+			Do(url);	
 
 		}
 
-		public static void Start()
+		public static void Start(string url)
 		{
 			using (NetMQContext context = NetMQContext.Create())
 			using (NetMQSocket clientSocket = context.CreateRequestSocket())
 			{
-				clientSocket.Connect("tcp://127.0.0.1:5556");
+				clientSocket.Connect(url);
 
 				while (true)
 				{

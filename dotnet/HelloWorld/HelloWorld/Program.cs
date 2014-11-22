@@ -6,18 +6,27 @@ namespace HelloWorld.Server
 {
 	public static class Program
 	{
-		public static void Main()
+		public static void Main(string[] args)
 		{
+
 			Console.WriteLine ("Starting Server:");
-			Do();			
+
+			string url;
+
+			if (args != null && args.Length == 1)
+				url = args [0];
+			else
+				url = "tcp://*:5556";
+
+			Do(url);			
 		}
 
-		public static void Do()
+		public static void Do(string url)
 		{
 			using (NetMQContext context = NetMQContext.Create())
 			using (var serverSocket = context.CreateResponseSocket())
 			{
-				serverSocket.Bind ("tcp://*:5556");
+				serverSocket.Bind (url);
 
 				while (true)
 				{
@@ -34,5 +43,7 @@ namespace HelloWorld.Server
 			}
 		}
 	}
+
+
 }
 
