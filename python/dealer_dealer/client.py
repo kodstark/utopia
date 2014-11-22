@@ -3,21 +3,13 @@ import random
 import sys
 import time
 
-from zmq import Poller
-
-# tcp://192.168.43.55
-# 
-
-# ip = "tcp://192.168.43.55"
-ip = "tcp://192.168.43.11"
-
 def _urls():
 	for ip in range(10, 60):
 		for port in range(5500, 5600):
 			yield "tcp://192.168.43.%s:%s" % (ip, port)
 
 context = zmq.Context()
-poller = Poller()
+poller = zmq.Poller()
 
 socket = context.socket(zmq.DEALER)
 poller.register(socket, zmq.POLLIN)
