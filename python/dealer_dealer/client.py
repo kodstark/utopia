@@ -3,10 +3,16 @@ import random
 import sys
 import time
 
-def _urls():
-	for ip in range(10, 60):
-		for port in range(5500, 5600):
-			yield "tcp://192.168.43.%s:%s" % (ip, port)
+def _urlsForMasks():
+    masks = [
+        "192.168.43.*",
+        "10.20.6.*",
+    ]
+    for mask in masks:
+        for ipPart in range(1, 254):
+            for port in range(5590, 5600):
+                ip = mask.replace("*", str(ipPart))
+                yield "tcp://%s:%s" % (ip, port)
 
 context = zmq.Context()
 poller = zmq.Poller()
@@ -14,10 +20,9 @@ poller = zmq.Poller()
 socket = context.socket(zmq.DEALER)
 poller.register(socket, zmq.POLLIN)
 
-for url in _urls():    
+for url in _urlsForMasks():    
     print 'Connect for %s' % url
     socket.connect(url)     
-
 
 print 'Polling for all connected URLs'
 
@@ -28,7 +33,3 @@ while True:
         secret = socket.recv()
         print 'Got secret', secret
     time.sleep(1) 
-
-    
-
-

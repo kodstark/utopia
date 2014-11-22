@@ -1,7 +1,7 @@
 import sys
 import zmq
 
-url = "tcp://192.168.43.55:5580"
+url = "tcp://*:5595"
 
 context = zmq.Context()
 socket = context.socket(zmq.DEALER)
