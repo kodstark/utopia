@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{31AB2D5B-61FD-4E1A-A700-115BB343AC96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "HelloWorld\Server.csproj", "{31AB2D5B-61FD-4E1A-A700-115BB343AC96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +15,6 @@ Global
 		{31AB2D5B-61FD-4E1A-A700-115BB343AC96}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = HelloWorld\HelloWorld.csproj
+		StartupItem = HelloWorld\Server.csproj
 	EndGlobalSection
 EndGlobal
