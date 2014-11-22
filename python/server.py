@@ -7,13 +7,8 @@ context = zmq.Context()
 socket = context.socket(zmq.PAIR)
 socket.bind("tcp://*:%s" % port)
 
-while True:
-
-    
-    
+while True:    
     msg = socket.recv()
-    print "Received: ", msg
-
-    print "Send: world!"
-    socket.send("world!")
+    print "Received: %s and reply with Hello" % msg
+    socket.send("Hello")
     time.sleep(1)
